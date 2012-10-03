@@ -1,3 +1,5 @@
+# Secrets is now Secretive. Please change to singlebrook/secretive
+
 # Secrets
 ### Secrets, secrets, are now fun. *(Exposed secrets hurt someone.)*
 
@@ -23,14 +25,14 @@ Or install it yourself as:
 
 ### Setting Up (With Rails)
 
-Simply run `rails g secrets` to create and automatically .gitignore the required .yml files. 
+Simply run `rails g secrets` to create and automatically .gitignore the required .yml files.
 
 When starting your Rails application, top-level variables and any variables in a group with the same name as your Rails environment will become ENV variables.
 
 For example, take following YAML file:
 
     TOP_SECRET: "This will self-destruct."
-    
+
     development:
       SUPER_SECRET: "Jeremiah was a bullfrog."`
     production:
@@ -41,7 +43,7 @@ In development:
     $ rails console -e development
       > ENV["SUPER_SECRET"]
       => "Jeremiah was a bullfrog."
-      
+
       > ENV["TOP_SECRET"]
       => "This will self-destruct."
 
@@ -50,7 +52,7 @@ In production:
     $ rails console -e production
       > ENV["SUPER_SECRET"]
       => "He was a good friend of mine."
-      
+
       > ENV["TOP_SECRET"]
       => "This will self-destruct."
 
@@ -67,7 +69,7 @@ You can also pass `Secrets.environmentalize!` a scope. Top-level variables will 
 For example, take following YAML file:
 
     TOP_SECRET: "This will self-destruct."
-  
+
     superheroes:
       BEST_HERO: "Harvey Birdman"`
     supervillains:
@@ -80,8 +82,8 @@ After calling `Secrets.environmentalize!("superheroes")`:
       => "Harvey Birdman"
 
       > ENV["TOP_SECRET"]
-      => "This will self-destruct."  
- 
+      => "This will self-destruct."
+
       > ENV["BEST_VILLAIN"]
       => nil
 
@@ -90,7 +92,7 @@ After calling `Secrets.environmentalize!("superheroes")`:
 Secrets comes with a rake task for sharing secrets with Heroku.
 
 Run `rake secrets:share_with[yourapp]` to convert all values in the `production` scope of your .yml file into ENV variables in the Heroku app.
-    
+
 ## Contributing
 
 1. Fork it
